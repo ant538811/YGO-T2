@@ -20,12 +20,6 @@ document.getElementById("spellcount").innerHTML = Sdeck.length;
 document.getElementById("trapcount").innerHTML = Tdeck.length;
 document.getElementById("extracount").innerHTML = Edeck.length;
 
-
-document.getElementById("monstercount").innerHTML = monstercount;
-document.getElementById("spellcount").innerHTML = spellcount;
-document.getElementById("trapcount").innerHTML = trapcount;
-document.getElementById("extracount").innerHTML = extracount;
-
 var category;
 category = "MS";
 $("#first").click(function(){
