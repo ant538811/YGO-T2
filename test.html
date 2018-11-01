@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- Begin Mailchimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 <style type="text/css">
@@ -34,3 +35,24 @@
 </div>
 
 <!--End mc_embed_signup-->
+=======
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<div id="target"></div>
+<script type="text/javascript">
+	$(function(){
+    $( "#target" ).load( "pathToYourFile" );
+
+    $(function(){
+    $.ajax({
+        url: "./assets/MR4/MScards.txt",
+        async: false,   // asynchronous request? (synchronous requests are discouraged...)
+        cache: false,   // with this, you can force the browser to not make cache of the retrieved data
+        dataType: "text",  // jQuery will infer this, but you can set explicitly
+        success: function( data, textStatus, jqXHR ) {
+            var resourceContent = data; // can be a global variable too...
+            // process the content...
+        }
+    });
+});
+});</script>
+>>>>>>> c559e77ed7a68bb1e4d48f4272df782e7ccdb94b
