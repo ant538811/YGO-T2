@@ -4,7 +4,7 @@ var MTcards = document.getElementById("MTlist").innerHTML.toString("utf-8").spli
 var SEcards = document.getElementById("SElist").innerHTML.toString("utf-8").split("\r\n");
 var TEcards = document.getElementById("TElist").innerHTML.toString("utf-8").split("\r\n");
 
-console.log(MScards);
+// console.log(MScards);
 
 var Mdeck = [];
 var Sdeck = [];
@@ -28,7 +28,7 @@ function generateSequence(){
 	}
 	shuffleSequence(sequence);
 	sequence.unshift("foundation");
-	console.log(sequence);
+	// console.log(sequence);
 	runSequence(sequence);
 }
 function MStoSequence(sequence){
@@ -56,13 +56,13 @@ function shuffleSequence(sequence){
 }
 
 function runSequence(sequence){
-	// console.log(sequence);
+	console.log(sequence);
 	var category = sequence[0].toString();
 	setChoices(sequence, category);
 }
 
 function setChoices(sequence, category){
-	console.log(category);
+	// console.log(category);
 	document.getElementById("choice1").innerHTML = "Hello | Goodbye";
 	document.getElementById("choice2").innerHTML = "Greetings | Farewell";
 	$("#first").click(function(){
@@ -76,9 +76,9 @@ function setChoices(sequence, category){
 }
 function addtodeck(sequence, selected, category){
 	if (category == "foundation"){
-		console.log(selected);
+		// console.log(selected);
 		var card1 = selected.split('|')[0].trim();
-		console.log(selected);
+		// console.log(selected);
 		var card2 = selected.split('|')[1].trim();
 		// var card3 = selected.split('|')[2].trim();
 		// var card4 = selected.split('|')[3].trim();
