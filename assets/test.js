@@ -1,9 +1,9 @@
+var foundation = document.getElementById("foundation").innerHTML.toString("utf-8").split("\r\n");
 var MScards = document.getElementById("MSlist").innerHTML.toString("utf-8").split("\r\n");
 var MEcards = document.getElementById("MElist").innerHTML.toString("utf-8").split("\r\n");
 var MTcards = document.getElementById("MTlist").innerHTML.toString("utf-8").split("\r\n");
 var SEcards = document.getElementById("SElist").innerHTML.toString("utf-8").split("\r\n");
 var TEcards = document.getElementById("TElist").innerHTML.toString("utf-8").split("\r\n");
-
 // console.log(MScards);
 
 var Mdeck = [];
@@ -16,9 +16,16 @@ document.getElementById("spellcount").innerHTML = Sdeck.length;
 document.getElementById("trapcount").innerHTML = Tdeck.length;
 document.getElementById("extracount").innerHTML = Edeck.length;
 
+var sequence = [];
+var category;
 generateSequence();
+console.log(sequence);
+runSequence();
+console.log(category);
+setChoices(category);
+// runSequence(generateSequence());
+
 function generateSequence(){
-	var sequence = [];
 	for (var i = 0; i < 5; i++){
 		MStoSequence(sequence);
 		MEtoSequence(sequence);
@@ -28,8 +35,9 @@ function generateSequence(){
 	}
 	shuffleSequence(sequence);
 	sequence.unshift("foundation");
+	// return sequence;
 	// console.log(sequence);
-	runSequence(sequence);
+	// runSequence(sequence);
 }
 function MStoSequence(sequence){
 	sequence.push("MS");
@@ -55,26 +63,27 @@ function shuffleSequence(sequence){
 	}
 }
 
-function runSequence(sequence){
-	console.log(sequence);
-	var category = sequence[0].toString();
-	setChoices(sequence, category);
+function runSequence(){
+	// console.log(sequence);
+	category = sequence[0].toString();
+	// setChoices(sequence, category);
 }
 
-function setChoices(sequence, category){
+function setChoices(category){
 	// console.log(category);
 	document.getElementById("choice1").innerHTML = "Hello | Goodbye";
 	document.getElementById("choice2").innerHTML = "Greetings | Farewell";
+	
+}
+function addtodeck(sequence, selected, category){
 	$("#first").click(function(){
 		var selected = document.getElementById("choice1").innerHTML;
-    	addtodeck(sequence, selected, category);
+    	// addtodeck(sequence, selected, category);
 	});
 	$("#second").click(function(){
 		var selected = document.getElementById("choice2").innerHTML;
-		addtodeck(sequence, selected, category);
+		// addtodeck(sequence, selected, category);
 	});
-}
-function addtodeck(sequence, selected, category){
 	if (category == "foundation"){
 		// console.log(selected);
 		var card1 = selected.split('|')[0].trim();
