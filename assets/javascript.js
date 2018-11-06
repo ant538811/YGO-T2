@@ -1,72 +1,180 @@
-var startScreen;
-var mainHTML;
-// reads the text file and stores them into 
-var fs = require("fs");
-var MScards = fs.readFileSync("./MR4/MScards.txt").toString('utf-8').split("\r\n");
-var MEcards = fs.readFileSync("./MR4/MEcards.txt").toString('utf-8').split("\r\n");
-var MTcards = fs.readFileSync("./MR4/MTcards.txt").toString('utf-8').split("\r\n");
-var SEcards = fs.readFileSync("./MR4/SEcards.txt").toString('utf-8').split("\r\n");
-var TEcards = fs.readFileSync("./MR4/TEcards.txt").toString('utf-8').split("\r\n");
-// for (var i = 0; i < MScards.length; i++){
-// 	console.log((i+1) + " " + MScards[i]);
-// }
+var foundation = document.getElementById("foundation").innerHTML.toString("utf-8").split("<br>");
+var MScards = document.getElementById("MSlist").innerHTML.toString("utf-8").split("<br>");
+var MEcards = document.getElementById("MElist").innerHTML.toString("utf-8").split("<br>");
+var MTcards = document.getElementById("MTlist").innerHTML.toString("utf-8").split("<br>");
+var SEcards = document.getElementById("SElist").innerHTML.toString("utf-8").split("<br>");
+var TEcards = document.getElementById("TElist").innerHTML.toString("utf-8").split("<br>");
+// console.log(MScards);
+
 var Mdeck = [];
 var Sdeck = [];
 var Tdeck = [];
 var Edeck = [];
-// function will take in card list and generate a random stack of card choices
-function generateMS(array)
-{
-	var randomindex = Math.floor(Math.random() * array.length);
-	var choiceone = array[randomindex];
-	// console.log(array[randomindex]);
 
-	// removes the picked choices so that will not be picked again
-	array.splice(randomindex, 1);
+document.getElementById("monstercount").innerHTML = Mdeck.length;
+document.getElementById("spellcount").innerHTML = Sdeck.length;
+document.getElementById("trapcount").innerHTML = Tdeck.length;
+document.getElementById("extracount").innerHTML = Edeck.length;
 
-	randomindex = Math.floor(Math.random() * array.length);
-	var choicetwo = array[randomindex];
-	// console.log(array[randomindex]);
-	array.splice(randomindex, 1);
+var sequence = [];
+var category;
+generateSequence();
+console.log(sequence);
+iterateSequence();
+setChoices(category);
+// iterateSequence(generateSequence());
 
-	// calls function to pick choices
-	pickMS(array, choiceone, choicetwo);
+function generateSequence(){
+	for (var i = 0; i < 5; i++){
+		MStoSequence(sequence);
+		MEtoSequence(sequence);
+		MTtoSequence(sequence);
+		SEtoSequence(sequence);
+		TEtoSequence(sequence);
+	}
+	shuffleSequence(sequence);
+	sequence.unshift("foundation");
+	// return sequence;
+	// console.log(sequence);
+	// iterateSequence(sequence);
 }
 
-function pickMS(array, choiceone, choicetwo)
-{
-	// simulates a choice between choice one and two
-	var testrng = Math.floor(Math.random() * 2);
-
-	var pickedchoice;
-	var chosenM;
-	var chosenS;
-	if (testrng == 0)
-	{
-		pickedchoice = choiceone.split('|');
-	} 
-	else if (testrng == 1)
-	{
-		pickedchoice = choicetwo.split('|');
-	}
-	chosenM = pickedchoice[0].trim();
-	chosenS = pickedchoice[1].trim();
-	Mdeck.push(chosenM);
-	Sdeck.push(chosenS);
+function MStoSequence(sequence){
+	sequence.push("MS");
 }
-for (var i = 0; i < MScards.length; i++)
-	{
-		generateMS(MScards);
+
+function MEtoSequence(sequence){
+	sequence.push("ME");
+}
+
+function MTtoSequence(sequence){
+	sequence.push("MT");
+}
+
+function SEtoSequence(sequence){
+	sequence.push("SE");
+}
+
+function TEtoSequence(sequence){
+	sequence.push("TE");
+}
+
+function shuffleSequence(sequence){
+	for (var i = sequence.length -1; i > 0; i--){
+		var j = Math.floor(Math.random() * (i + 1));
+		var temp = sequence[i];
+		sequence[i] = sequence[j];
+		sequence[j] = temp;
 	}
+}
 
-	console.log("Mdeck: " + Mdeck);
-	console.log("Sdeck: " + Sdeck);
-	console.log("Tdeck: " + Tdeck);
-	console.log("Edeck: " + Edeck);
-// var cards = [
-// 	['Hydrogeddon', 'Hydrogeddon'],
-// 	['Speedroid Terrortop', 'Speedroid Taketomborg']
-// ];
+function iterateSequence(){
+	category = sequence[0].toString();
+}
 
-// console.log(cards[0][1]);
+function setChoices(category){
+	// console.log(category);
+	// category = "MS";
+	if (category == "MS"){
+		var list = MScards;
+	}
+	else if (category == "ME"){
+		var list = MEcards;
+	}
+	else if (category == "MT"){
+		var list = MTcards;
+	}
+	else if (category == "SE"){
+		var list = SEcards;
+	}
+	else if (category == "TE"){
+		var list = TEcards;
+	}
+	else {
+		var list = foundation;
+	}
+	var random1 = Math.floor(Math.random() * list.length) - 1;
+	if (random1 < 0){
+		random1 = 0;
+	}
+	document.getElementById("choice1").innerHTML = list[random1];
+	list.splice(random1, 1);
+	var random2 = Math.floor(Math.random() * list.length) - 1;
+	if (random2 < 0){
+		random2 = 0;
+	}
+	document.getElementById("choice2").innerHTML = list[random2];	
+	list.splice(random2, 1);
+	
+	
+	
+}
+function addtodeck(sequence, selected, category){
+	$("#first").click(function(){
+		var selected = document.getElementById("choice1").innerHTML;
+	});
+	$("#second").click(function(){
+		var selected = document.getElementById("choice2").innerHTML;
+	});
+	if (category == "foundation"){
+		var card1 = selected.split('|')[0].trim();
+		var card2 = selected.split('|')[1].trim();
+		var card3 = selected.split('|')[2].trim();
+		var card4 = selected.split('|')[3].trim();
+		var card5 = selected.split('|')[4].trim();
+	}
+	else
+	{	
+		var card1 = selected.split('|')[0].trim();
+		var card2 = selected.split('|')[1].trim();
+	}
+	if (category =="foundation"){
+		Mdeck.push(card1);
+		Mdeck.push(card2);
+		Mdeck.push(card3);
+		Mdeck.push(card4);
+		Mdeck.push(card5);
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card3 + "<br />";
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card4 + "<br />";
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card5 + "<br />";
+	}
+	if (category =="MS"){
+		Mdeck.push(card1);
+		Sdeck.push(card2);
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
+		document.getElementById("spelllist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
+	}
+	if (category =="ME"){
+		Mdeck.push(card1);
+		Edeck.push(card2);
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
+		document.getElementById("extralist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
+	}
+	if (category =="MT"){
+		Mdeck.push(card1);
+		Tdeck.push(card2);
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
+		document.getElementById("traplist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
+	}
+	if (category =="SE"){
+		Sdeck.push(card1);
+		Edeck.push(card2);
+		document.getElementById("spelllist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
+		document.getElementById("extralist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
+	}
+	if (category =="TE"){
+		Tdeck.push(card1);
+		Edeck.push(card2);
+		document.getElementById("traplist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
+		document.getElementById("extralist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
+	}
+	document.getElementById("monstercount").innerHTML = (Mdeck.length);
+	document.getElementById("spellcount").innerHTML = (Sdeck.length);
+	document.getElementById("trapcount").innerHTML = (Tdeck.length);
+	document.getElementById("extracount").innerHTML = (Edeck.length);
+	sequence.shift();
+	iterateSequence(sequence);
+}
 

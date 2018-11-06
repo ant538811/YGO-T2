@@ -1,9 +1,9 @@
-var foundation = document.getElementById("foundation").innerHTML.toString("utf-8").split("\r\n");
-var MScards = document.getElementById("MSlist").innerHTML.toString("utf-8").split("\r\n");
-var MEcards = document.getElementById("MElist").innerHTML.toString("utf-8").split("\r\n");
-var MTcards = document.getElementById("MTlist").innerHTML.toString("utf-8").split("\r\n");
-var SEcards = document.getElementById("SElist").innerHTML.toString("utf-8").split("\r\n");
-var TEcards = document.getElementById("TElist").innerHTML.toString("utf-8").split("\r\n");
+var foundation = document.getElementById("foundation").innerHTML.toString("utf-8").split("<br>");
+var MScards = document.getElementById("MSlist").innerHTML.toString("utf-8").split("<br>");
+var MEcards = document.getElementById("MElist").innerHTML.toString("utf-8").split("<br>");
+var MTcards = document.getElementById("MTlist").innerHTML.toString("utf-8").split("<br>");
+var SEcards = document.getElementById("SElist").innerHTML.toString("utf-8").split("<br>");
+var TEcards = document.getElementById("TElist").innerHTML.toString("utf-8").split("<br>");
 // console.log(MScards);
 
 var Mdeck = [];
@@ -20,11 +20,19 @@ var sequence = [];
 var category;
 generateSequence();
 console.log(sequence);
-runSequence();
-console.log(category);
+iterateSequence();
 setChoices(category);
-// runSequence(generateSequence());
-
+if ((Mdeck.length < 20) && (Sdeck.length < 10) && (Tdeck.length < 10) && (Edeck.length < 15))
+{ 
+	$("#first").click(function(){
+		var selected = document.getElementById("choice1").innerHTML;
+		console.log("first");
+	});
+	$("#second").click(function(){
+		var selected = document.getElementById("choice2").innerHTML;
+		console.log("second");
+	});
+}
 function generateSequence(){
 	for (var i = 0; i < 5; i++){
 		MStoSequence(sequence);
@@ -37,23 +45,29 @@ function generateSequence(){
 	sequence.unshift("foundation");
 	// return sequence;
 	// console.log(sequence);
-	// runSequence(sequence);
+	// iterateSequence(sequence);
 }
+
 function MStoSequence(sequence){
 	sequence.push("MS");
 }
+
 function MEtoSequence(sequence){
 	sequence.push("ME");
 }
+
 function MTtoSequence(sequence){
 	sequence.push("MT");
 }
+
 function SEtoSequence(sequence){
 	sequence.push("SE");
 }
+
 function TEtoSequence(sequence){
 	sequence.push("TE");
 }
+
 function shuffleSequence(sequence){
 	for (var i = sequence.length -1; i > 0; i--){
 		var j = Math.floor(Math.random() * (i + 1));
@@ -63,35 +77,57 @@ function shuffleSequence(sequence){
 	}
 }
 
-function runSequence(){
-	// console.log(sequence);
+function iterateSequence(){
 	category = sequence[0].toString();
-	// setChoices(sequence, category);
 }
 
 function setChoices(category){
 	// console.log(category);
-	document.getElementById("choice1").innerHTML = "Hello | Goodbye";
-	document.getElementById("choice2").innerHTML = "Greetings | Farewell";
+	// category = "MS";
+	if (category == "MS"){
+		var list = MScards;
+	}
+	else if (category == "ME"){
+		var list = MEcards;
+	}
+	else if (category == "MT"){
+		var list = MTcards;
+	}
+	else if (category == "SE"){
+		var list = SEcards;
+	}
+	else if (category == "TE"){
+		var list = TEcards;
+	}
+	else {
+		var list = foundation;
+	}
+	var random1 = Math.floor(Math.random() * list.length) - 1;
+	if (random1 < 0){
+		random1 = 0;
+	}
+	var set1 = list[random1];
+	var display1 = set1.split("|").join("<br>");
 	
+	document.getElementById("choice1").innerHTML = display1;
+	list.splice(random1, 1);
+	var random2 = Math.floor(Math.random() * list.length) - 1;
+	if (random2 < 0){
+		random2 = 0;
+	}
+	var set2 = list[random2];
+	var display2 = set2.split("|").join("<br>");
+	document.getElementById("choice2").innerHTML = display2;	
+	list.splice(random2, 1);
 }
+
 function addtodeck(sequence, selected, category){
-	$("#first").click(function(){
-		var selected = document.getElementById("choice1").innerHTML;
-    	// addtodeck(sequence, selected, category);
-	});
-	$("#second").click(function(){
-		var selected = document.getElementById("choice2").innerHTML;
-		// addtodeck(sequence, selected, category);
-	});
 	if (category == "foundation"){
-		// console.log(selected);
 		var card1 = selected.split('|')[0].trim();
-		// console.log(selected);
 		var card2 = selected.split('|')[1].trim();
-		// var card3 = selected.split('|')[2].trim();
-		// var card4 = selected.split('|')[3].trim();
-		// var card5 = selected.split('|')[4].trim();
+		var card3 = selected.split('|')[2].trim();
+		var card4 = selected.split('|')[3].trim();
+		var card5 = selected.split('|')[4].trim();
 	}
 	else
 	{	
@@ -101,14 +137,14 @@ function addtodeck(sequence, selected, category){
 	if (category =="foundation"){
 		Mdeck.push(card1);
 		Mdeck.push(card2);
-		// Mdeck.push(card3);
-		// Mdeck.push(card4);
-		// Mdeck.push(card5);
+		Mdeck.push(card3);
+		Mdeck.push(card4);
+		Mdeck.push(card5);
 		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
 		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
-		// document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card3 + "<br />";
-		// document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card4 + "<br />";
-		// document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card5 + "<br />";
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card3 + "<br />";
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card4 + "<br />";
+		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card5 + "<br />";
 	}
 	if (category =="MS"){
 		Mdeck.push(card1);
@@ -145,6 +181,6 @@ function addtodeck(sequence, selected, category){
 	document.getElementById("trapcount").innerHTML = (Tdeck.length);
 	document.getElementById("extracount").innerHTML = (Edeck.length);
 	sequence.shift();
-	runSequence(sequence);
+	iterateSequence(sequence);
 }
 
