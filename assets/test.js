@@ -20,20 +20,20 @@ var category;
 generateSequence();
 // console.log(sequence);
 iterateSequence();
-
-if ((Mdeck.length < 20) && (Sdeck.length < 10) && (Tdeck.length < 10) && (Edeck.length < 15))
-{ 
+ 
 	$("#first").click(function(){
-		var selected = document.getElementById("choice1").innerHTML;
-		addtodeck(sequence, category, true);
+		if (sequence.length !== 0){
+			var selected = document.getElementById("choice1").innerHTML;
+			addtodeck(sequence, category, true);
+		}
 	});
 
 	$("#second").click(function(){
-		var selected = document.getElementById("choice2").innerHTML;
-		addtodeck(sequence, category, false);
+		if (sequence.length !== 0){
+			var selected = document.getElementById("choice2").innerHTML;
+			addtodeck(sequence, category, false);
+		}
 	});
-
-}
 
 function generateSequence(){
 	for (var i = 0; i < 5; i++){
@@ -300,7 +300,7 @@ function addtodeck(sequence, category, choice){
 	if (sequence.length == 0){
 		alert("It's Time to Duel!");
 	}
-	else{
+	else if (sequence.length !== 0){
 		iterateSequence(sequence);
 	}
 }
