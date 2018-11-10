@@ -1,0 +1,30 @@
+Absolute Minimum:
+
+2 sets of F
+10 sets of MS
+10 sets of ME
+10 sets of MT
+10 sets of SE
+10 sets of TE
+
+______________
+
+Goal:
+
+12 sets of F
+40 sets of MS
+40 sets of ME
+40 sets of MT
+40 sets of SE
+40 sets of TE
+
+Not counting F, comes out to 120 M, 80 S, 80 T, 120 E
+There are 4 relevant divisions this can be built for: Synchro, Xyz, Link, Fusion/Pendulum/Misc
+Through equal representation, each division should have
+
+10 sets of MS
+10 sets of ME
+10 sets of MT
+10 sets of SE
+10 sets of TE
+Coming out to 30M, 20S, 20T, 30E

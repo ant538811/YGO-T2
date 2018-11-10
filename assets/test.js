@@ -4,7 +4,6 @@ var MEcards = document.getElementById("MElist").innerHTML.toString("utf-8").spli
 var MTcards = document.getElementById("MTlist").innerHTML.toString("utf-8").split("<br>");
 var SEcards = document.getElementById("SElist").innerHTML.toString("utf-8").split("<br>");
 var TEcards = document.getElementById("TElist").innerHTML.toString("utf-8").split("<br>");
-// console.log(MScards);
 
 var Mdeck = [];
 var Sdeck = [];
@@ -19,20 +18,23 @@ document.getElementById("extracount").innerHTML = Edeck.length;
 var sequence = [];
 var category;
 generateSequence();
-console.log(sequence);
+// console.log(sequence);
 iterateSequence();
-setChoices(category);
+
 if ((Mdeck.length < 20) && (Sdeck.length < 10) && (Tdeck.length < 10) && (Edeck.length < 15))
 { 
 	$("#first").click(function(){
 		var selected = document.getElementById("choice1").innerHTML;
-		console.log("first");
+		addtodeck(sequence, category, true);
 	});
+
 	$("#second").click(function(){
 		var selected = document.getElementById("choice2").innerHTML;
-		console.log("second");
+		addtodeck(sequence, category, false);
 	});
+
 }
+
 function generateSequence(){
 	for (var i = 0; i < 5; i++){
 		MStoSequence(sequence);
@@ -41,11 +43,9 @@ function generateSequence(){
 		SEtoSequence(sequence);
 		TEtoSequence(sequence);
 	}
+
 	shuffleSequence(sequence);
 	sequence.unshift("foundation");
-	// return sequence;
-	// console.log(sequence);
-	// iterateSequence(sequence);
 }
 
 function MStoSequence(sequence){
@@ -79,60 +79,169 @@ function shuffleSequence(sequence){
 
 function iterateSequence(){
 	category = sequence[0].toString();
+	console.log(sequence);
+	setChoices();
 }
 
-function setChoices(category){
-	// console.log(category);
-	// category = "MS";
+function setChoices(){
+	document.getElementById("set1slot1").innerHTML = "";
+	document.getElementById("set1slot2").innerHTML = "";
+	document.getElementById("set1slot3").innerHTML = "";
+	document.getElementById("set1slot4").innerHTML = "";
+	document.getElementById("set1slot5").innerHTML = "";
+	document.getElementById("set2slot1").innerHTML = "";
+	document.getElementById("set2slot2").innerHTML = "";
+	document.getElementById("set2slot3").innerHTML = "";
+	document.getElementById("set2slot4").innerHTML = "";
+	document.getElementById("set2slot5").innerHTML = "";
+	document.getElementById("set1slot1").style = "background-color:white";
+	document.getElementById("set1slot2").style = "background-color:white";
+	document.getElementById("set1slot3").style = "background-color:white";
+	document.getElementById("set1slot4").style = "background-color:white";
+	document.getElementById("set1slot5").style = "background-color:white";
+	document.getElementById("set2slot1").style = "background-color:white";
+	document.getElementById("set2slot2").style = "background-color:white";
+	document.getElementById("set2slot3").style = "background-color:white";
+	document.getElementById("set2slot4").style = "background-color:white";
+	document.getElementById("set2slot5").style = "background-color:white";
 	if (category == "MS"){
 		var list = MScards;
 	}
+
 	else if (category == "ME"){
 		var list = MEcards;
 	}
+
 	else if (category == "MT"){
 		var list = MTcards;
 	}
+
 	else if (category == "SE"){
 		var list = SEcards;
 	}
+
 	else if (category == "TE"){
 		var list = TEcards;
 	}
+
 	else {
 		var list = foundation;
 	}
+
 	var random1 = Math.floor(Math.random() * list.length) - 1;
 	if (random1 < 0){
 		random1 = 0;
 	}
+
 	var set1 = list[random1];
-	var display1 = set1.split("|").join("<br>");
-	
-	document.getElementById("choice1").innerHTML = display1;
+	var set1slot1 = set1.split("|")[0];
+	var set1slot2 = set1.split("|")[1];
+	document.getElementById("set1slot1").innerHTML = set1slot1;
+	document.getElementById("set1slot2").innerHTML = set1slot2;
+
 	list.splice(random1, 1);
 	var random2 = Math.floor(Math.random() * list.length) - 1;
 	if (random2 < 0){
 		random2 = 0;
 	}
+
 	var set2 = list[random2];
-	var display2 = set2.split("|").join("<br>");
-	document.getElementById("choice2").innerHTML = display2;	
+	var set2slot1 = set2.split("|")[0];
+	var set2slot2 = set2.split("|")[1];
+	document.getElementById("set2slot1").innerHTML = set2slot1;
+	document.getElementById("set2slot2").innerHTML = set2slot2;	
 	list.splice(random2, 1);
+	// console.log(list);
+	// console.log(set1);
+	// console.log(set2);
+	if (category =="foundation"){
+		var set1slot3 = set1.split("|")[2];
+		var set1slot4 = set1.split("|")[3];
+		var set1slot5 = set1.split("|")[4];
+		var set2slot3 = set2.split("|")[2];
+		var set2slot4 = set2.split("|")[3];
+		var set2slot5 = set2.split("|")[4];
+
+		document.getElementById("set1slot3").innerHTML = set1slot3;
+		document.getElementById("set1slot4").innerHTML = set1slot4;
+		document.getElementById("set1slot5").innerHTML = set1slot5;
+		document.getElementById("set2slot3").innerHTML = set2slot3;
+		document.getElementById("set2slot4").innerHTML = set2slot4;
+		document.getElementById("set2slot5").innerHTML = set2slot5;
+	}
+
+	if (category == "foundation"){
+		document.getElementById("set1slot1").style = "background-color:peru";
+		document.getElementById("set1slot2").style = "background-color:peru";
+		document.getElementById("set1slot3").style = "background-color:peru";
+		document.getElementById("set1slot4").style = "background-color:peru";
+		document.getElementById("set1slot5").style = "background-color:peru";
+		document.getElementById("set2slot1").style = "background-color:peru";
+		document.getElementById("set2slot2").style = "background-color:peru";
+		document.getElementById("set2slot3").style = "background-color:peru";
+		document.getElementById("set2slot4").style = "background-color:peru";
+		document.getElementById("set2slot5").style = "background-color:peru";
+	}
+
+	if (category == "MS"){
+		document.getElementById("set1slot1").style = "background-color:peru";
+		document.getElementById("set1slot2").style = "background-color:darkcyan";
+		document.getElementById("set2slot1").style = "background-color:peru";
+		document.getElementById("set2slot2").style = "background-color:darkcyan";
+	}
+
+	if (category == "ME"){
+		document.getElementById("set1slot1").style = "background-color:peru";
+		document.getElementById("set1slot2").style = "background-color:green";
+		document.getElementById("set2slot1").style = "background-color:peru";
+		document.getElementById("set2slot2").style = "background-color:green";
+	}
+
+	if (category == "MT"){
+		document.getElementById("set1slot1").style = "background-color:peru";
+		document.getElementById("set1slot2").style = "background-color:deeppink";
+		document.getElementById("set2slot1").style = "background-color:peru";
+		document.getElementById("set2slot2").style = "background-color:deeppink";
+	}
+
+	if (category == "SE"){
+		document.getElementById("set1slot1").style = "background-color:darkcyan";
+		document.getElementById("set1slot2").style = "background-color:green";
+		document.getElementById("set2slot1").style = "background-color:darkcyan";
+		document.getElementById("set2slot2").style = "background-color:green";
+	}
+
+	if (category == "TE"){
+		document.getElementById("set1slot1").style = "background-color:deeppink";
+		document.getElementById("set1slot2").style = "background-color:green";
+		document.getElementById("set2slot1").style = "background-color:deeppink";
+		document.getElementById("set2slot2").style = "background-color:green";
+	}
+
 }
 
-function addtodeck(sequence, selected, category){
-	if (category == "foundation"){
-		var card1 = selected.split('|')[0].trim();
-		var card2 = selected.split('|')[1].trim();
-		var card3 = selected.split('|')[2].trim();
-		var card4 = selected.split('|')[3].trim();
-		var card5 = selected.split('|')[4].trim();
+function addtodeck(sequence, category, choice){
+	if (choice == true){
+		var card1 = document.getElementById("set1slot1").innerHTML;
+		var card2 = document.getElementById("set1slot2").innerHTML;
+
+		if (category == "foundation"){
+			var card3 = document.getElementById("set1slot3").innerHTML;
+			var card4 = document.getElementById("set1slot4").innerHTML;
+			var card5 = document.getElementById("set1slot5").innerHTML;
+		}
+
 	}
-	else
-	{	
-		var card1 = selected.split('|')[0].trim();
-		var card2 = selected.split('|')[1].trim();
+	else if (choice == false){
+		var card1 = document.getElementById("set2slot1").innerHTML;
+		var card2 = document.getElementById("set2slot2").innerHTML;
+
+		if (category == "foundation"){
+			var card3 = document.getElementById("set2slot3").innerHTML;
+			var card4 = document.getElementById("set2slot4").innerHTML;
+			var card5 = document.getElementById("set2slot5").innerHTML;
+		}
+
 	}
 	if (category =="foundation"){
 		Mdeck.push(card1);
@@ -146,41 +255,52 @@ function addtodeck(sequence, selected, category){
 		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card4 + "<br />";
 		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card5 + "<br />";
 	}
+
 	if (category =="MS"){
 		Mdeck.push(card1);
 		Sdeck.push(card2);
 		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
 		document.getElementById("spelllist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
 	}
+
 	if (category =="ME"){
 		Mdeck.push(card1);
 		Edeck.push(card2);
 		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
 		document.getElementById("extralist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
 	}
+
 	if (category =="MT"){
 		Mdeck.push(card1);
 		Tdeck.push(card2);
 		document.getElementById("monsterlist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
 		document.getElementById("traplist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
 	}
+
 	if (category =="SE"){
 		Sdeck.push(card1);
 		Edeck.push(card2);
 		document.getElementById("spelllist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
 		document.getElementById("extralist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
 	}
+
 	if (category =="TE"){
 		Tdeck.push(card1);
 		Edeck.push(card2);
 		document.getElementById("traplist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card1 + "<br />";
 		document.getElementById("extralist").innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + card2 + "<br />";
 	}
+
 	document.getElementById("monstercount").innerHTML = (Mdeck.length);
 	document.getElementById("spellcount").innerHTML = (Sdeck.length);
 	document.getElementById("trapcount").innerHTML = (Tdeck.length);
 	document.getElementById("extracount").innerHTML = (Edeck.length);
 	sequence.shift();
-	iterateSequence(sequence);
+	// iterateSequence(sequence);
+	if (sequence.length == 0){
+		alert("It's Time to Duel!");
+	}
+	else{
+		iterateSequence(sequence);
+	}
 }
-

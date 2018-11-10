@@ -12,20 +12,26 @@
         <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     </head>
     <body>
-      <div id="monster"><b>ABC (<span id="monstercount"></span>): </b></div>
+      <div id="monster"><b>Monster (<span id="monstercount"></span>): </b></div>
         <p id = "monsterlist"></p>
-      <div id="spell"><b>DEF (<span id="spellcount"></span>): </b></div>
+      <div id="spell"><b>Spell (<span id="spellcount"></span>): </b></div>
         <p id = "spelllist"></p>
-      <div id="trap"><b>GHI (<span id="trapcount"></span>): </b></div>
+      <div id="trap"><b>Trap (<span id="trapcount"></span>): </b></div>
         <p id = "traplist"></p>
-      <div id="extra"><b>JKL (<span id="extracount"></span>): </b></div>
+      <div id="extra"><b>Extra (<span id="extracount"></span>): </b></div>
         <p id = "extralist"></p>
     <div class="container">
       <div class="row">
         <!-- <div class="col-md-1"></div> -->
         <button type="button" id = 'first'>Choice 1</button>
         <div class="col-md-4">
-          <div id="choice1"></div>
+          <div id="choice1">
+            <div id="set1slot1"></div>
+            <div id="set1slot2"></div>
+            <div id="set1slot3"></div>
+            <div id="set1slot4"></div>
+            <div id="set1slot5"></div>
+          </div>
           <br>
           <br>
         </div>
@@ -36,81 +42,103 @@
       <div class="row">
         <button type="button" id = 'second'>Choice 2</button>
         <div class="col-md-4">
-          <div id="choice2"></div>
+          <div id="choice2">
+            <div id="set2slot1"></div>
+            <div id="set2slot2"></div>
+            <div id="set2slot3"></div>
+            <div id="set2slot4"></div>
+            <div id="set2slot5"></div>
+          </div>
         </div>
       </div>
     </div>
 <div id = "foundation" hidden>
 Black Luster Soldier - Envoy of the Beginning | Arisen Gaia the Fierce Knight | Beginning Knight | Evening Twilight Knight | Charging Gaia the Fierce Knight <br>
 Blue-Eyes White Dragon | Kaibaman | The White Stone of Legend | Maiden with Eyes of Blue | Dragon Spirit of White <br>
-Elemental HERO Neos | Elemental HERO Stratos | Neo Space Connector | Neo-Spacian Glow Moss | Neo-Spacian Grand Mole <br>
-Junk Synchron | Quillbolt Hedgehog | Tuningware | Speed Warrior | Doppelwarrior <br>
-Red Resonator | Red Sprinter | Red Warg | Armageddon Knight | Wandering King WildWind <br>
-Goblindbergh | Kagetokage | Photon Thrasher | Tin Goldfish | Evilswarm Mandragora <br>
+Elemental HERO Neos | Elemental HERO Stratos | Neo Space Connector | Neo-Spacian Aqua Dolphin | Neo-Spacian Grand Mole <br>
+Fortress Warrior | Weeping Idol | Tuningware | Speed Warrior | Doppelwarrior <br>
+Force Resonator | Red Sprinter | Red Warg | Armageddon Knight | Wandering King WildWind <br>
+Gagaga Child | Gagaga Caeser | Gagaga Girl | Gagaga Gardna | Gagaga Magician <br>
 Photon Thrasher | Galaxy Knight | Galaxy Soldier | Galaxy-Eyes Photon Dragon | Galaxy Wizard <br>
-Odd-Eyes Pendulum Dragon | Odd-Eyes Arc Pendulum Dragon | Odd-Eyes Persona Dragon | Odd-Eyes Mirage Dragon | Odd-Eyes Dissolver <br>
-Linkslayer | Cyberse Gadget | Backup Secretary | Clock Wyvern | Boot Staggered <br>
+Black Fang Magician | Purple Poison Magician | Harmonizing Magician | Dragonpulse Magician | Dragonpit Magician <br>
+Linkslayer | Cyberse Gadget | Backup Secretary | Stack Reviver | Boot Staggered
 </div>
 
 <div id = "MSlist" hidden>
-Masked Chopper | Moon Mirror Shield <br>
-Junk Synchron | Tuning <br>
+Bri Synchron | Tuning <br>
 Red Resonator | Resonator Call <br>
-Destiny HERO - Plasma | Scapegoat <br>
-Time Wizard | Raigeki <br>
-Dotscaper | Cynet Backdoor <br>
-Leotron | Unexpected Dai <br>
-Battlin' Boxer Bailout | Reinforcements of the Army <br>
-Storm Cipher | One-Time Passcode <br>
+Glow-up Bulb | One for One <br>
+Psychic Wheelder | Emergency Teleport <br>
+Junk Forward | The Warrior Returning Alive <br>
+Frostosaurus | Summoner's Art <br>
 Blue-Eyes Chaos MAX Dragon | Chaos Form <br>
 Odd-Eyes Pendulum Dragon | Spiral Flame Strike <br>
-Cyber-tech Alligator | Summoner's Art <br>
 Timelord Metaion | Ante <br>
+Masked Chopper | Moon Mirror Shield <br>
+Destiny HERO - Plasma | Scapegoat <br>
+Leotron | Unexpected Dai <br>
+Battlin' Boxer Bailout | Reinforcement of the Army <br>
+Heroic Challenger - Thousand Blades | Foolish Burial
 </div>
 
 <div id = "MElist" hidden>
-Protron | Linkuriboh <br>
-Bitron | Link Disciple <br>
+T.G. Striker | T.G. Trident Launcher <br>
+T.G. Tank Larva | T.G. Star Guardian <br>
+Thousand-Eyes Idol | Relinquished Anima <br>
 Predaplant Chlamydosundew | Starving Venom Fusion Dragon <br>
-Cyberse Converter | Update Jammer <br>
-Cyberse Synchron | Cyberse Quantum Dragon <br>
-Link Infra-Flier | Tri-Gate Wizard <br>
-Bri Synchron | Red Dragon Archfiend <br>
-Code Radiator | Decode Talker <br>
-Phantom King Hydride | Crystron Needlefiber <br>
+Summoned Skull | Beckoned Skull Archfiend <br>
+Proto-Cyber Dragon | Chimeratech Megafleet Dragon <br>
+Marauding Captain | Gaia Saber, the Lightning Shadow <br>
+Dotscaper | Link Disciple <br>
+Catche Eve L2 | Talkback Lancer <br>
+Performage Trick Clown | Performage Trapeze Magician <br>
+Protron | Linkuriboh <br>
+Link Infra-Flier | Powercode Talker <br>
+Unknown Synchron | Junk Speeder <br>
 Rokket Synchron | Borreload Savage Dragon <br>
-T.G. Striker | Accel Synchron <br>
-Card Trooper | Dante, Traveler of the Burning Abyss <br>
-Summoned Skull | Beckoned Summoned Skull <br>
+Cyberse Synchron | Cyberse Quantum Dragon <br>
+KagetoKage | King of the Feral Imps <br>
+Blackwing - Zephyros the Elite | Raidraptor - Force Strix
 </div>
 
 <div id = "MTlist" hidden>
+Flare Resonator | Powerful Rebirth <br>
 Dark Magician | Eternal Soul <br>
-Thousand-Eyes Idol | Mirror Force <br>
-X-Saber Pashul | Reinforce Truth <br>
-Divine Bird King Alector | Breakthrough Skill <br>
 Artifact Scythe | Artifact Sanctum <br>
+Clock Wyvern | Cyberse Beacon <br>
+Evilswarm Mandragora | Defense Draw <br>
+Junk Synchron | Spirit Force <br>
+Goblindbergh | Drowning Mirror Force <br>
+Tin Goldfish | Heavy Storm Duster <br>
+Performapal Five-Rainbow Magician | Scrap Iron Scarecrow <br>
+Performage Mirror Conductor | Prideful Roar
 </div>
 
 <div id = "SElist" hidden>
-Instant Fusion | Sea Monster of Theseus <br>
 Mask Change II | Masked Hero Dark Law <br>
 Instant Fusion | Gem-Knight Seraphinite <br>
-Ectoplasmer | Number 85: Crazy Box <br>
+Synchro Cracker | Clear Wing Synchro Dragon <br>
 Cynet Storm | Powercode Talker <br>
 De-synchro | Iron Chain Dragon <br>
-Card of Demise | Underclock Taker <br>
-Upstart Goblin | Number 101: Silent Honors ARK <br>
 Twin Twisters | Trishula, Dragon of the Ice Barrier <br>
+Spool Code | Bellcat Fighter <br>
+World Legacy Succession | Topologic Bomber Dragon <br>
+Xyz Override | Dark Rebellion Xyz Dragon <br>
+Mage Power | Number 82: Heartlandraco
 </div>
 
 <div id = "TElist" hidden>
-Synchro Call | Red Dragon Archfiend Scarlight <br>
-Bottomless Trap Hole | Traptrix Rafflesia <br>
+Synchro Call | Hot Red Dragon Archfiend <br>
+Revival Gift | Red Dragon Archfiend Scarlight <br>
+Traptrix Trap Hole Nightmare | Traptrix Rafflesia <br>
 Xyz Reborn | Number 39: Utopia <br>
-Recoded Alive | Code Talker <br>
+Recoded Alive | Transcode Talker <br>
 Pinpoint Guard | Castel the Skyblaster Musketeer <br>
 Descending Lost Star | Ally of Justice Catastor <br>
+Double Dragon Descent | Number 100: Numeron Dragon <br>
+Cynet Conflict | Decode Talker <br>
+Reject Reborn | Red Wyvern <br>
+Limit Code | Code Talker
 </div>
 
         <script src="assets/test.js"></script>
