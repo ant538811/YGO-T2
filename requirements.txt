@@ -28,3 +28,14 @@ Through equal representation, each division should have
 10 sets of SE
 10 sets of TE
 Coming out to 30M, 20S, 20T, 30E
+
+_____________
+
+Post-balancetesting
+Traps are difficult to find and match.  Many Extras are simply filler.  Maybe make a monster foundation and an extra foundation set.  Monster foundation will be the first pick and extra foundation will be the last.  Going by this, each draft will look like:
+
+1 set of 5M
+5 sets of TE
+1 set of 5E
+
+Deck composition of 25M 10S 5T 15E

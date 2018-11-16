@@ -6,4 +6,10 @@ ME list can focus on monsters that are specifically chosen for specific ED monst
 
 SE and TE lists can focus on generic ED monsters and generic spells/traps.
 
-Extra deck summoning will be geared towards certain archetypes/deck styles. There will only be a handful of Fusion monsters and they will only be summoned through special methods or used for utility. Tuners will generally be Synchrons and Resonators with Synchro monsters being fully generic. Xyz monsters will be Rank 4 and monsters focused on Xyz will be focused on level 4 swarm. Links and those specilizing in the method will be Cyberse. Spells and traps that are not generic will focus on the archetypes of these designations.
+Extra deck summoning will be geared towards certain archetypes/deck styles. There will only be a handful of Fusion monsters and they will only be summoned through special methods or used for utility. Tuners will generally be Synchrons and Resonators with Synchro monsters being fully generic. Xyz monsters will be Rank 4 and monsters focused on Xyz will be focused on level 4/3 swarm. Links and those specilizing in the method will be Cyberse. Spells and traps that are not generic will focus on the archetypes of these designations.
+
+
+__________________________________________________________________________________________________________________
+Post-test notes
+
+Synchros are way too prominent.  Link monsters in their current state are too weak to compete.  Tests have shown that the Cyberse requirement Link monsters are too difficult to summon for what value they provide.  Link monsters should reflect value in what you pay to get them.  Right now, costs are too high or specific for the benefit they provide.  However, balance is delicate.  Adding in monsters like Borrelsword Dragon will demand better removal options.
