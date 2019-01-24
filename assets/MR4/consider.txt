@@ -70,6 +70,7 @@ Goyo Guardian [E]
 __________________________________
 Xyz Era:
 
+Heliosphere Dragon [M]
 Psychic Tracker [M]
 Cockadoodledoo [M]
 Battlin' Boxer Veil [M]
@@ -253,3 +254,4 @@ Chimeratech Megafleet Dragon [E]
 Gaia Saber, the Lightning Shadow [E]
 Black Luster Soldier, the Chaos Warrior [E]
 Relinquished Anima [E]
+Salamangreat Almiraj [E]
